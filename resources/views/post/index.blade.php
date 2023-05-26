@@ -24,9 +24,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach($Posts as $Post)
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-4">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{ route('show', $Post->id) }}"><p>{{$Post->title}}</p></a>
-                    <p>{{$Post->comment}}</p>
+                <div class="p-6 bg-white border-b border-gray-200 d-flex justify-content-between">
+                    <div>
+                        <a href="{{ route('show', $Post->id) }}"><p>{{$Post->title}}</p></a>
+                        <p>{{$Post->comment}}</p>
+                    </div>
+                    <div class="text-right">
+                        <a class="btn btn-info mt-4 " href="{{ route('edit', $Post->id) }}" role="button">編集</a>
+                    </div>
                 </div>
             </div>
             @endforeach
