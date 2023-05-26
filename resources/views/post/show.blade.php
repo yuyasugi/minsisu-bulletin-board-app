@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('投稿詳細') }}
+            {{ __('投稿編集') }}
         </h2>
     </x-slot>
 
