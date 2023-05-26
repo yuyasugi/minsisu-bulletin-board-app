@@ -35,4 +35,11 @@ class PostController extends Controller
 
         return redirect()->route('index')->with($messageKey, $flashMessage);
     }
+
+    public function show($id){
+
+        $showPosts = DB::table('posts')->where('id', '=', $id)->get();
+
+        return view('post.show',compact('showPosts'));
+    }
 }

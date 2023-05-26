@@ -25,7 +25,7 @@
             @foreach($Posts as $Post)
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-4">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <p>{{$Post->title}}</p>
+                    <a href="{{ route('show', $Post->id) }}"><p>{{$Post->title}}</p></a>
                     <p>{{$Post->comment}}</p>
                 </div>
             </div>

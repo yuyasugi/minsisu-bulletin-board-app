@@ -26,5 +26,6 @@ Route::get('/dashboard', function () {
 Route::get('/index', [PostController::class, 'index'])->middleware(['auth'])->name('index');
 Route::get('/create', [PostController::class, 'create'])->middleware(['auth'])->name('create');
 Route::post('/store', [PostController::class, 'store'])->middleware(['auth'])->name('store');
+Route::get('/show/{id}', [PostController::class, 'show'])->middleware(['auth'])->name('show');
 
 require __DIR__.'/auth.php';
