@@ -29,5 +29,6 @@ Route::post('/store', [PostController::class, 'store'])->middleware(['auth'])->n
 Route::get('/show/{id}', [PostController::class, 'show'])->middleware(['auth'])->name('show');
 Route::get('/edit/{id}', [PostController::class, 'edit'])->middleware(['auth'])->name('edit');
 Route::post('/update/{id}', [PostController::class, 'update'])->middleware(['auth'])->name('update');
+Route::post('/destroy/{id}', [PostController::class, 'destroy'])->middleware(['auth'])->name('destroy');
 
 require __DIR__.'/auth.php';

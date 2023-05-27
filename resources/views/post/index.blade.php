@@ -29,9 +29,12 @@
                         <a href="{{ route('show', $Post->id) }}"><p>{{$Post->title}}</p></a>
                         <p>{{$Post->comment}}</p>
                     </div>
-                    <div class="text-right">
+                    <form class="text-right" action="{{ route('destroy', $Post->id) }}" method="POST">
+                        @csrf
                         <a class="btn btn-info mt-4 " href="{{ route('edit', $Post->id) }}" role="button">編集</a>
-                    </div>
+                        <input type="hidden" name="id" value="{{ $Post->id }}">
+                        <button type="submit" class="btn btn-info mt-4">削除</button>
+                    </form>
                 </div>
             </div>
             @endforeach

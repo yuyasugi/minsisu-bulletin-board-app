@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function index(){
 
-        $Posts = DB::table('posts')->get();
+        $Posts = Post::select()->whereNull('posts.deleted_at')->get();
 
         return view('post.index',compact('Posts'));
     }
@@ -65,5 +65,22 @@ class PostController extends Controller
         }
 
         return redirect()->route('edit', $posts['id'])->with($messageKey, $flashMessage);
+    }
+
+    public function destroy(Request $request){
+
+        $posts = $request->all();
+        // dd($posts);
+        $destroyPost = Post::where('id', $posts['id'])->update(['deleted_at' => date("Y-m-d H:i:s", time())]);
+
+        if($destroyPost){
+            $messageKey = 'successMessage';
+            $flashMessage = '削除が成功しました！';
+        } else {
+            $messageKey = 'errorMessage';
+            $flashMessage = '削除できませんでした。';
+        }
+
+        return redirect()->route('index')->with($messageKey, $flashMessage);
     }
 }
