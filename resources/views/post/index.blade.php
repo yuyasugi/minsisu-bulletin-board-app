@@ -29,12 +29,14 @@
                         <a href="{{ route('show', $Post->id) }}"><p>{{$Post->title}}</p></a>
                         <p>{{$Post->comment}}</p>
                     </div>
+                    @if (Auth::user()->id == $Post->user_id)
                     <form class="text-right" action="{{ route('destroy', $Post->id) }}" method="POST">
                         @csrf
                         <a class="btn btn-info mt-4 " href="{{ route('edit', $Post->id) }}" role="button">編集</a>
                         <input type="hidden" name="id" value="{{ $Post->id }}">
                         <button type="submit" class="btn btn-info mt-4">削除</button>
                     </form>
+                    @endif
                 </div>
             </div>
             @endforeach
