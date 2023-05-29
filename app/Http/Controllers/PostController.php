@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,13 @@ class PostController extends Controller
 {
     public function index(){
 
-        $Posts = Post::select()->whereNull('posts.deleted_at')->get();
+        $Posts = Post::with('comments')
+                ->with('user')
+                ->select()
+                ->whereNull('posts.deleted_at')
+                ->get();
+
+                // dd($Posts);
 
         return view('post.index',compact('Posts'));
     }
@@ -38,7 +45,12 @@ class PostController extends Controller
 
     public function show($id){
 
-        $showPosts = DB::table('posts')->where('id', '=', $id)->get();
+        $showPosts = Post::with('comments')
+                ->with('user')
+                ->where('id', '=', $id)
+                ->get();
+
+        // dd($showPosts);
 
         return view('post.show',compact('showPosts'));
     }
