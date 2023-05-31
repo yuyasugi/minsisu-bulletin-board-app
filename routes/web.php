@@ -34,5 +34,7 @@ Route::post('/destroy/{id}', [PostController::class, 'destroy'])->middleware(['a
 
 Route::get('/create_comment/{id}', [CommentController::class, 'create'])->middleware(['auth'])->name('create_comment');
 Route::post('/store_comment', [CommentController::class, 'store'])->middleware(['auth'])->name('store_comment');
+Route::get('/edit_comment/{id}', [CommentController::class, 'edit'])->middleware(['auth'])->name('edit_comment');
+Route::post('/update_comment/{id}', [CommentController::class, 'update'])->middleware(['auth'])->name('update_comment');
 
 require __DIR__.'/auth.php';
