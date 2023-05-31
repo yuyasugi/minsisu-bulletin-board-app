@@ -16,8 +16,7 @@ class PostController extends Controller
                 ->select()
                 ->whereNull('posts.deleted_at')
                 ->get();
-
-                // dd($Posts);
+                // dd($Comments);
 
         return view('post.index',compact('Posts'));
     }

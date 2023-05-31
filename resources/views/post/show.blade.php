@@ -40,10 +40,10 @@
                             <div class="d-flex justify-content-between">
                                 <p>{{Str::limit($Comment->comment,100,'・・・')}}</p>
                                 @if (Auth::user()->id == $Comment->user_id)
-                                <form action="{{ route('destroy', $Post->id) }}" method="POST">
+                                <form action="{{ route('destroy_comment', $Comment->id) }}" method="POST">
                                 @csrf
                                 <a class="btn btn-info" href="{{ route('edit_comment', $Comment->id) }}" role="button">編集</a>
-                                <input type="hidden" name="id" value="{{ $Post->id }}">
+                                <input type="hidden" name="id" value="{{ $Comment->id }}">
                                 <button type="submit" class="btn btn-info">削除</button>
                                 </form>
                                 @endif

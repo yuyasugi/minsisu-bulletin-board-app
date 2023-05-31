@@ -63,4 +63,21 @@ class CommentController extends Controller
 
         return redirect()->route('edit_comment', $comments['id'])->with($messageKey, $flashMessage);
     }
+
+    public function destroy(Request $request){
+
+        $comments = $request->all();
+        // dd($comments);
+        $destroyComment = Comment::where('id', $comments['id'])->update(['deleted_at' => date("Y-m-d H:i:s", time())]);
+
+        if($destroyComment){
+            $messageKey = 'successMessage';
+            $flashMessage = '削除が成功しました！';
+        } else {
+            $messageKey = 'errorMessage';
+            $flashMessage = '削除できませんでした。';
+        }
+
+        return redirect()->route('index')->with($messageKey, $flashMessage);
+    }
 }
