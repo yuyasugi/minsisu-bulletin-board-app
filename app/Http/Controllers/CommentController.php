@@ -35,4 +35,32 @@ class CommentController extends Controller
 
         return redirect()->route('index')->with($messageKey, $flashMessage);
     }
+
+    public function edit($id){
+
+        $editComment = Comment::where('id', '=', $id)->first();
+
+        $showPost = Post::with('comments')
+                ->with('user')
+                ->find($editComment->post_id);
+
+        return view('comment.edit',compact('editComment', 'showPost'));
+    }
+
+    public function update(Request $request){
+
+        $comments = $request->all();
+        // dd($comments);
+        $updateComment = Comment::where('id', $comments['id'])->update(['comment' => $comments['comment']]);
+
+        if($updateComment){
+            $messageKey = 'successMessage';
+            $flashMessage = 'コメントの編集が成功しました！';
+        } else {
+            $messageKey = 'errorMessage';
+            $flashMessage = 'コメントの編集できませんでした。';
+        }
+
+        return redirect()->route('edit_comment', $comments['id'])->with($messageKey, $flashMessage);
+    }
 }

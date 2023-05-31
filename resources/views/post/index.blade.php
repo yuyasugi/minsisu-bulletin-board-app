@@ -50,21 +50,37 @@
                     </div>
                     <div class="comment mt-3">
                         @foreach ($Post->comments as $Comment)
-                        @if ($loop->first)
-                        <div class="text-muted small mb-2 w-75 mt-4">{{$Comment->user->name}}のコメント</div>
                         <div class="w-100">
-                            <p>{{Str::limit($Comment->comment,100,'・・・')}}</p>
-                            <div class="mt-3 d-flex justify-content-between">
+                            @if ($loop->first)
+                            <div class="text-muted small mb-2 w-75 mt-4">{{$Comment->user->name}}のコメント</div>
+                            <div class="d-flex justify-content-between">
+                                <p>{{Str::limit($Comment->comment,100,'・・・')}}</p>
+                                @if (Auth::user()->id == $Comment->user_id)
+                                <form action="{{ route('destroy', $Post->id) }}" method="POST">
+                                @csrf
+                                <a class="btn btn-info" href="{{ route('edit_comment', $Comment->id) }}" role="button">編集</a>
+                                <input type="hidden" name="id" value="{{ $Post->id }}">
+                                <button type="submit" class="btn btn-info">削除</button>
+                                </form>
+                                @endif
+                            </div>
+                            @endif
+                        </div>
+                        @endforeach
+                        <div class="w-100">
+                            <div class="mt-5 d-flex justify-content-between">
+                                @if ($Post->comments->count())
                                 <div>
                                     <p class="text-muted small">他返信{{$Post->comments->count()-1}}件</p>
                                 </div>
+                                @else
+                                <p class="text-muted small">コメントはまだありません。</p>
+                                @endif
                                 <div>
                                     <a class="btn btn-info mr-1" href="{{ route('create_comment', $Post->id) }}" role="button">返信する</a>
                                 </div>
                             </div>
                         </div>
-                        @endif
-                        @endforeach
                     </div>
                 </div>
             </div>
