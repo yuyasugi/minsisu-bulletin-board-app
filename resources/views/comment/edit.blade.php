@@ -63,7 +63,7 @@
                             <textarea class="form-control mb-3" name="comment" cols="30" rows="1">{{$editComment->comment}}</textarea>
                         </div>
                         <input type="hidden" name="id" value="{{ $editComment->id }}">
-                        <button type="submit" class="btn btn-info">更新</button>
+                        <button type="submit" class="btn btn-outline-info">更新</button>
                     </form>
                 </div>
             </div>

@@ -25,9 +25,9 @@
                                 @if (Auth::user()->id == $Post->user_id)
                                 <form action="{{ route('destroy', $Post->id) }}" method="POST">
                                 @csrf
-                                <a class="btn btn-info" href="{{ route('edit', $Post->id) }}" role="button">編集</a>
+                                <a class="btn btn-outline-info" href="{{ route('edit', $Post->id) }}" role="button">編集</a>
                                 <input type="hidden" name="id" value="{{ $Post->id }}">
-                                <button type="submit" class="btn btn-info">削除</button>
+                                <button type="submit" class="btn btn-outline-info">削除</button>
                                 </form>
                                 @endif
                             </div>
@@ -42,9 +42,9 @@
                                 @if (Auth::user()->id == $Comment->user_id)
                                 <form action="{{ route('destroy_comment', $Comment->id) }}" method="POST">
                                 @csrf
-                                <a class="btn btn-info" href="{{ route('edit_comment', $Comment->id) }}" role="button">編集</a>
+                                <a class="btn btn-outline-info" href="{{ route('edit_comment', $Comment->id) }}" role="button">編集</a>
                                 <input type="hidden" name="id" value="{{ $Comment->id }}">
-                                <button type="submit" class="btn btn-info">削除</button>
+                                <button type="submit" class="btn btn-outline-info">削除</button>
                                 </form>
                                 @endif
                             </div>
@@ -52,7 +52,7 @@
                         @endforeach
                         <div class="text-right mt-5">
                             <div>
-                                <a class="btn btn-info mr-1" href="{{ route('create_comment', $Post->id) }}" role="button">返信する</a>
+                                <a class="btn btn-outline-info mr-1" href="{{ route('create_comment', $Post->id) }}" role="button">返信する</a>
                             </div>
                         </div>
                     </div>
