@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +38,8 @@ Route::post('/store_comment', [CommentController::class, 'store'])->middleware([
 Route::get('/edit_comment/{id}', [CommentController::class, 'edit'])->middleware(['auth'])->name('edit_comment');
 Route::post('/update_comment/{id}', [CommentController::class, 'update'])->middleware(['auth'])->name('update_comment');
 Route::post('/destroy_comment/{id}', [CommentController::class, 'destroy'])->middleware(['auth'])->name('destroy_comment');
+
+Route::post('/store_like/{post_id}',[LikeController::class,'store'])->name('store_like');
+Route::post('/store_destroy/{id}',[LikeController::class,'destroy'])->name('destroy_like');
 
 require __DIR__.'/auth.php';

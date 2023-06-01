@@ -34,7 +34,7 @@
                             <textarea class="form-control mb-3" name="comment" cols="30" rows="5">{{$Post->comment}}</textarea>
                         </div>
                         <input type="hidden" name="id" value="{{ $Post->id }}">
-                        <button type="submit" class="btn btn-success">更新</button>
+                        <button type="submit" class="btn btn-outline-info">更新</button>
                     </form>
                     @endforeach
                 </div>

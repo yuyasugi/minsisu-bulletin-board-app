@@ -13,10 +13,12 @@ class PostController extends Controller
 
         $Posts = Post::with('comments')
                 ->with('user')
+                ->with('likes')
                 ->select()
                 ->whereNull('posts.deleted_at')
                 ->get();
-                // dd($Comments);
+
+        // dd($Posts);
 
         return view('post.index',compact('Posts'));
     }

@@ -17,7 +17,7 @@
                             <p>内容</p>
                             <textarea class="form-control mb-3" name="comment" rows="5"></textarea>
                         </div>
-                        <button class="btn btn-info" type="submit">投稿する</button>
+                        <button class="btn btn-outline-info" type="submit">投稿する</button>
                     </form>
                 </div>
             </div>
